@@ -16,8 +16,8 @@
                 <span class="mat-step-label-xs-none">Login Data</span>
             </ng-template>
             <div class="step-content">
-                <app-login-data-step formControlName="loginData" [emailValue]="registerForm.value.personalData?.email"
-                    [stepper]="stepper"></app-login-data-step>
+                <app-login-data-step formControlName="loginData" [emailValue]="emailValue" [stepper]="stepper">
+                </app-login-data-step>
             </div>
         </mat-step>
         <mat-step editable="false">

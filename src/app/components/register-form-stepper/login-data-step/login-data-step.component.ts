@@ -2,9 +2,9 @@ import { Component, OnInit, forwardRef, Input, SimpleChanges, OnChanges, OnDestr
 import { FormGroup, FormBuilder, NG_VALUE_ACCESSOR, ControlValueAccessor, Validators, AbstractControl, ValidationErrors, NG_VALIDATORS, Validator, ValidatorFn } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { Subscription } from 'rxjs';
-import { ValidationRegExDict } from 'src/app/_helpers/validation-reg-ex.dict';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { mustMatchValidator, mustNotMatchToStringValidator } from './../../../_helpers/match.validator';
+import { mustMatchValidator, mustNotMatchToStringValidator } from './../../../shared/match.validator';
+import { ValidationRegExDict } from './../../../shared/validation-reg-ex.dict';
 
 @Component({
   selector: 'app-login-data-step',
@@ -29,6 +29,7 @@ export class LoginDataStepComponent implements OnInit, OnChanges, OnDestroy, Con
   loginDataForm: FormGroup;
   subscriptions: Subscription[] = [];
   faArrowLeft = faArrowLeft;
+  loginTooltipText = 'Only letters and digits, cannot be the same as e-mail';
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -79,16 +80,11 @@ export class LoginDataStepComponent implements OnInit, OnChanges, OnDestroy, Con
     return this.loginDataForm.valid ? null : { invalidForm: { valid: false, message: "loginDataForm fields are invalid" } };
   }
 
-
   private createLoginDataForm(): void {
     this.loginDataForm = this.formBuilder.group({
       login: ['', this.getLoginValidators()],
-      password: ['', [
-        Validators.required,
-        Validators.minLength(10),
-        Validators.pattern(ValidationRegExDict.Password)
-      ]],
-      confirmPassword: ['', [Validators.required]],
+      password: ['', this.getPasswordValidators()],
+      confirmPassword: ['', this.getConfirmPasswordValidators()]
     }, {
       validator: mustMatchValidator('password', 'confirmPassword')
     });
@@ -102,6 +98,18 @@ export class LoginDataStepComponent implements OnInit, OnChanges, OnDestroy, Con
       Validators.pattern(ValidationRegExDict.OnlyLettersAndDigits),
       mustNotMatchToStringValidator(this.emailValue)
     ];
+  }
+
+  private getPasswordValidators(): ValidatorFn[] {
+    return [
+      Validators.required,
+      Validators.minLength(10),
+      Validators.pattern(ValidationRegExDict.Password)
+    ];
+  }
+
+  private getConfirmPasswordValidators(): ValidatorFn[] {
+    return [Validators.required];
   }
 
   private subscribeFormValueChanges(): void {

@@ -11,6 +11,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { RegisterFormStepperComponent } from './components/register-form-stepper/register-form-stepper.component';
 import { PersonalDataStepComponent } from './components/register-form-stepper/personal-data-step/personal-data-step.component';
 import { LoginDataStepComponent } from './components/register-form-stepper/login-data-step/login-data-step.component';
@@ -24,6 +25,8 @@ import { StyledInputPeselComponent } from './components/UI/styled-input-pesel/st
 import { StyledInputConfirmPasswordComponent } from './components/UI/styled-input-confirm-password/styled-input-confirm-password.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { StyledInfoTooltipComponent } from './components/UI/styled-info-tooltip/styled-info-tooltip.component';
+import { StyledInputPasswordComponent } from './components/UI/styled-input-password/styled-input-password.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     StyledInputPhoneComponent,
     StyledInputPeselComponent,
     StyledInputConfirmPasswordComponent,
+    StyledInfoTooltipComponent,
+    StyledInputPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +58,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatIconModule,
     TextMaskModule,
     FontAwesomeModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

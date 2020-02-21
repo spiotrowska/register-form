@@ -1,27 +1,27 @@
 import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 
-import { StyledInputPhoneComponent } from './styled-input-phone.component';
+import { StyledInputPasswordComponent } from './styled-input-password.component';
 import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 
-describe('StyledInputPhoneComponent', () => {
-  let component: StyledInputPhoneComponent;
-  let fixture: ComponentFixture<StyledInputPhoneComponent>;
+describe('StyledInputPasswordComponent', () => {
+  let component: StyledInputPasswordComponent;
+  let fixture: ComponentFixture<StyledInputPasswordComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         ReactiveFormsModule
       ],
-      declarations: [ StyledInputPhoneComponent ]
+      declarations: [StyledInputPasswordComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(inject([FormBuilder], (fb: FormBuilder) => {
-    fixture = TestBed.createComponent(StyledInputPhoneComponent);
+    fixture = TestBed.createComponent(StyledInputPasswordComponent);
     component = fixture.componentInstance;
     component.formGroup = fb.group({
-      phone: ''
+      password: ''
     });
     fixture.detectChanges();
   }));

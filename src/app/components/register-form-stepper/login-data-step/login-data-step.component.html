@@ -1,6 +1,7 @@
 <ng-container [formGroup]="loginDataForm">
-    <app-styled-input label="Login" formControlName="login" [formGroup]="loginDataForm"></app-styled-input>
-    <app-styled-input label="Password" formControlName="password" [formGroup]="loginDataForm" type="password"></app-styled-input>
+    <app-styled-input label="Login" formControlName="login" [formGroup]="loginDataForm" [tooltip]="loginTooltipText">
+    </app-styled-input>
+    <app-styled-input-password [formGroup]="loginDataForm"></app-styled-input-password>
     <app-styled-input-confirm-password [formGroup]="loginDataForm"></app-styled-input-confirm-password>
     <div>
         <button mat-raised-button color="primary" matStepperPrevious>

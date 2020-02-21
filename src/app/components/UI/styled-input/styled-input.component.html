@@ -2,6 +2,7 @@
     <mat-form-field class="styled-input">
         <mat-label>{{label}}</mat-label>
         <input matInput [formControlName]="formControlName" [type]="type">
+        <app-styled-info-tooltip *ngIf="tooltip" matSuffix [info]="tooltip"></app-styled-info-tooltip>
     </mat-form-field>
     <app-styled-validation-error *ngIf="formControl.touched" [errors]="errors" [controlName]="label"></app-styled-validation-error>
 </div>
