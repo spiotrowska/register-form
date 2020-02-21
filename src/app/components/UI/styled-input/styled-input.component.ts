@@ -18,6 +18,7 @@ export class StyledInputComponent implements OnInit, ControlValueAccessor {
   @Input() formControlName: string;
   @Input() formGroup: FormGroup;
   @Input() type = 'text';
+  @Input() tooltip: string;
 
   constructor() { }
 

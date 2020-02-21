@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PersonalDataStepComponent } from './personal-data-step.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { StyledInputComponent } from '../../UI/styled-input/styled-input.component';
 
 describe('PersonalDataStepComponent', () => {
   let component: PersonalDataStepComponent;
@@ -8,7 +10,13 @@ describe('PersonalDataStepComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PersonalDataStepComponent ]
+      imports: [
+        ReactiveFormsModule
+      ],
+      declarations: [ 
+        PersonalDataStepComponent,
+        StyledInputComponent 
+      ]
     })
     .compileComponents();
   }));

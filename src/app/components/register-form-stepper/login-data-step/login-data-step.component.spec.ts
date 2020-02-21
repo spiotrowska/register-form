@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginDataStepComponent } from './login-data-step.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { StyledInputComponent } from '../../UI/styled-input/styled-input.component';
 
 describe('LoginDataStepComponent', () => {
   let component: LoginDataStepComponent;
@@ -8,7 +10,13 @@ describe('LoginDataStepComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginDataStepComponent ]
+      imports: [
+        ReactiveFormsModule
+      ],
+      declarations: [ 
+        LoginDataStepComponent,
+        StyledInputComponent 
+      ]
     })
     .compileComponents();
   }));

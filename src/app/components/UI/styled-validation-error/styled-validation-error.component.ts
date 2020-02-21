@@ -1,10 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ValidationErrors } from '@angular/forms';
-import { ValidationErrorMessage } from './../../../_helpers/validationr-error-message-strategy/validation-error-message';
-import { RequiredErrorMessage } from './../../../_helpers/validationr-error-message-strategy/required-error-message';
-import { PatternErrorMessage } from './../../../_helpers/validationr-error-message-strategy/pattern-error-message';
-import { MinLengthErrorMessage } from './../../../_helpers/validationr-error-message-strategy/min-length-error-message';
-import { MaxLengthErrorMessage } from './../../../_helpers/validationr-error-message-strategy/max-length-error-message';
+import { ValidationErrorMessage } from './../../../shared/validationr-error-message-strategy/validation-error-message';
+import {
+  RequiredErrorMessage,
+  PatternErrorMessage,
+  MinLengthErrorMessage,
+  MaxLengthErrorMessage
+} from './../../../shared/validationr-error-message-strategy/validation-error-message-types';
 
 @Component({
   selector: 'app-styled-validation-error',

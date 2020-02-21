@@ -1,10 +1,10 @@
 import { Component, OnInit, forwardRef, Input, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, NG_VALUE_ACCESSOR, ControlValueAccessor, Validators, AbstractControl, ValidationErrors, Validator, NG_VALIDATORS } from '@angular/forms';
+import { FormGroup, FormBuilder, NG_VALUE_ACCESSOR, ControlValueAccessor, Validators, AbstractControl, ValidationErrors, Validator, NG_VALIDATORS, ValidatorFn } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { Subscription } from 'rxjs';
-import { ValidationRegExDict } from 'src/app/_helpers/validation-reg-ex.dict';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { peselValidator } from './../../../_helpers/pesel.validator';
+import { ValidationRegExDict } from '../../../shared/validation-reg-ex.dict';
+import { peselValidator } from './../../../shared/pesel.validator';
 
 @Component({
   selector: 'app-personal-data-step',
@@ -47,6 +47,7 @@ export class PersonalDataStepComponent implements OnInit, OnDestroy, ControlValu
   writeValue(val: any): void {
     if (val === null) {
       this.personalDataForm.reset();
+      this.autoNextStep = true;
     } else {
       val && this.personalDataForm.setValue(val, { emitEvent: false });
     }
@@ -70,32 +71,45 @@ export class PersonalDataStepComponent implements OnInit, OnDestroy, ControlValu
 
   private createPersonalDataForm(): void {
     this.personalDataForm = this.formBuilder.group({
-      firstName: ['', [
-        Validators.required,
-        Validators.pattern(ValidationRegExDict.OnlyLetters)
-      ]],
-      lastName: ['', [
-        Validators.required,
-        Validators.pattern(ValidationRegExDict.OnlyLetters)
-      ]],
-      pesel: ['', [
-        Validators.required,
-        Validators.pattern(ValidationRegExDict.OnlyDigits),
-        Validators.maxLength(11),
-        Validators.minLength(11),
-        peselValidator()
-      ]],
-      email: ['', [
-        Validators.required,
-        Validators.email
-      ]],
-      phone: ['', [
-        Validators.required,
-        Validators.pattern(ValidationRegExDict.OnlyDigits),
-        Validators.maxLength(9),
-        Validators.minLength(9)
-      ]],
+      firstName: ['', this.getUserNameValidators()],
+      lastName: ['', this.getUserNameValidators()],
+      pesel: ['', this.getPeselValidators()],
+      email: ['', this.getEmailValidators()],
+      phone: ['', this.getPhoneValidators()]
     });
+  }
+
+  private getUserNameValidators(): ValidatorFn[] {
+    return [
+      Validators.required,
+      Validators.pattern(ValidationRegExDict.OnlyLetters)
+    ];
+  }
+
+  private getPeselValidators(): ValidatorFn[] {
+    return [
+      Validators.required,
+      Validators.pattern(ValidationRegExDict.OnlyDigits),
+      Validators.maxLength(11),
+      Validators.minLength(11),
+      peselValidator()
+    ];
+  }
+
+  private getEmailValidators(): ValidatorFn[] {
+    return [
+      Validators.required,
+      Validators.email
+    ];
+  }
+
+  private getPhoneValidators(): ValidatorFn[] {
+    return [
+      Validators.required,
+      Validators.pattern(ValidationRegExDict.OnlyDigits),
+      Validators.maxLength(9),
+      Validators.minLength(9)
+    ];
   }
 
   private subscribeFormValueChanges(): void {

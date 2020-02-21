@@ -8,6 +8,7 @@ import { AbstractControl, ValidationErrors, FormGroup } from '@angular/forms';
 })
 export class StyledInputConfirmPasswordComponent implements OnInit {
   @Input() formGroup: FormGroup;
+  hide = true;
 
   constructor() { }
 

@@ -18,6 +18,10 @@ export class RegisterFormStepperComponent implements OnInit {
   get loginDataControl(): AbstractControl {
     return this.registerForm.get('loginData');
   }
+
+  get emailValue(): string {
+    return this.registerForm.value.personalData?.email;
+  }
   
   ngOnInit() {
     this.createRegisterForm();

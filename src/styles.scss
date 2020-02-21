@@ -6,12 +6,20 @@ body {
 body {
     margin     : 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: #f2f2f2;
 }
 
 .styled-input-container {
     margin: 10px 0;
-    
+
     .styled-input {
         width: 100%;
+    }
+
+    .password-visibility-icon {
+        font-size   : 17px;
+        cursor      : pointer;
+        color       : rgba(0, 0, 0, 0.54);
+        margin-right: 5px;
     }
 }
