@@ -1,0 +1,32 @@
+<form [formGroup]="registerForm">
+    <mat-horizontal-stepper linear #stepper labelPosition="bottom">
+        <ng-template matStepperIcon="edit">
+            <mat-icon>done</mat-icon>
+        </ng-template>
+        <mat-step [stepControl]="personalDataControl">
+            <ng-template matStepLabel>
+                <span class="mat-step-label-xs-none">Personal Data</span>
+            </ng-template>
+            <div class="step-content">
+                <app-personal-data-step formControlName="personalData" [stepper]="stepper"></app-personal-data-step>
+            </div>
+        </mat-step>
+        <mat-step [stepControl]="loginDataControl" editable="false">
+            <ng-template matStepLabel>
+                <span class="mat-step-label-xs-none">Login Data</span>
+            </ng-template>
+            <div class="step-content">
+                <app-login-data-step formControlName="loginData" [emailValue]="registerForm.value.personalData?.email"
+                    [stepper]="stepper"></app-login-data-step>
+            </div>
+        </mat-step>
+        <mat-step editable="false">
+            <ng-template matStepLabel>
+                <span class="mat-step-label-xs-none">Confirmation</span>
+            </ng-template>
+            <div class="step-content">
+                <app-confirmation-step [stepper]="stepper"></app-confirmation-step>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</form>

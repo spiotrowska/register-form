@@ -1,0 +1,8 @@
+<div [formGroup]="formGroup" class="styled-input-container">
+    <mat-form-field class="styled-input">
+        <mat-label>Phone</mat-label>
+        <span matPrefix>+48 &nbsp;</span>
+        <input matInput formControlName="phone" type="tel" [textMask]="{mask: mask}">
+    </mat-form-field>
+    <app-styled-validation-error *ngIf="formControl.touched" [errors]="errors" controlName="Phone"></app-styled-validation-error>
+</div>

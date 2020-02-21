@@ -1,0 +1,12 @@
+<div>
+    <div class="icon-check-animation">
+        <fa-icon [icon]="faCheckCircle" size="7x" [styles]="{'color': 'cadetblue'}"></fa-icon>
+    </div>
+    <p class="success-info">Registered successfully!</p>
+</div>
+<div>
+    <p>If you want to register again, please click the button below.</p>
+    <button mat-raised-button color="primary" (click)="stepper.reset()">
+        Reset <fa-icon [icon]="faUndoAlt"></fa-icon>
+    </button>
+</div>

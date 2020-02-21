@@ -1,0 +1,12 @@
+<ng-container [formGroup]="personalDataForm">
+    <app-styled-input label="First name" formControlName="firstName" [formGroup]="personalDataForm"></app-styled-input>
+    <app-styled-input label="Last name" formControlName="lastName" [formGroup]="personalDataForm"></app-styled-input>
+    <app-styled-input-pesel [formGroup]="personalDataForm"></app-styled-input-pesel>
+    <app-styled-input label="Email" formControlName="email" [formGroup]="personalDataForm" type="email"></app-styled-input>
+    <app-styled-input-phone [formGroup]="personalDataForm"></app-styled-input-phone>
+    <div>
+        <button mat-raised-button color="primary" matStepperNext [disabled]="personalDataForm.invalid">
+            Next <fa-icon [icon]="faArrowRight"></fa-icon>
+        </button>
+    </div>
+</ng-container>
